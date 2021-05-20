@@ -97,17 +97,24 @@ public class mangSinhVien{
         if(d==0) return 0;    
         else return s/d;
       }    
-//    public SV MAXdiemTB(){
-//        SV max = a.get(0),tam;
-//        for (SV x : a){
-//            if(x instanceof SVCNTT)
-//               tam =((SVCNTT) x);
-//            else 
-//               tam =((SvKinhTe) x);
-//            max = max.getDiemTB() < tam.getDiemTB() ? tam : max;
-//            }
-//        return max;
-//        }
+      public void MaxTBC(){
+        SV b = null;
+        double max=0;
+        for(SV x: a){
+            if(x instanceof SVCNTT)
+                if(((SVCNTT) x).getDiemTB()>max){
+                    max = ((SVCNTT) x).getDiemTB();
+                    b = ((SVCNTT) x);
+                }
+            if(x instanceof SvKinhTe)
+                if(((SvKinhTe) x).getDiemTB()>max){
+                    max = ((SvKinhTe) x).getDiemTB();
+                    b = ((SvKinhTe) x);
+                }
+        }
+        System.out.println("Sinh vien co diem lon nhat: "+b);
+
+}
     public SV maxTBC_CNTT () {
         SV x = null; 
         int i; 
@@ -154,6 +161,8 @@ public class mangSinhVien{
           System.out.println("............................");
           getDiemTBC_KinhTe();
           System.out.println("Diem trung binh chung nganh KinhTe: "+getDiemTBC_KinhTe());
+          System.out.println("............................");
+          MaxTBC();
           System.out.println("............................");
           System.out.println("Diem trung binh chung cao nhat nganh CNTT: "+maxTBC_CNTT ());
           System.out.println("............................");
